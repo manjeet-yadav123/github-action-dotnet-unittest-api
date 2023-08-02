@@ -28,7 +28,7 @@ jobs:
 #       continue-on-error: true
     - name: Build and publish projects
       run: |
-        dotnet publish --configuration Release --output website ./.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj
+        dotnet publish ./.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj --configuration Release --output website
 #       dotnet publish --configuration Release --output website ./.NetCore-Unit-Test/Starter files/TopLevelManagement
 
     - name: Upload Artifact
