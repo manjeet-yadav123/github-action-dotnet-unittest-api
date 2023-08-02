@@ -27,7 +27,9 @@ jobs:
 #       working-directory: ./.NetCore-Unit-Test/Finished solution/EmployeeManagement.Test
 #       continue-on-error: true
     - name: Publish
-      run: dotnet publish ./.NetCore-Unit-Test/Finished solution -c Release -o website
+      run: |
+        dotnet publish --configuration Release -o website -p:PublishDir=.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj
+        dotnet publish --configuration Release -o website -p:PublishDir=.NetCore-Unit-Test/Starter files/TopLevelManagement/TopLevelManagement.csproj
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
