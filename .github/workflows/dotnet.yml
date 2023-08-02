@@ -19,17 +19,16 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       working-directory: ./.NetCore-Unit-Test/Finished solution
-#     - name: Build
-#       run: dotnet build --no-restore
-#       working-directory: ./.NetCore-Unit-Test/Finished solution
+    - name: Build
+      run: dotnet build --configuration Release
+      working-directory: ./.NetCore-Unit-Test/Finished solution
 #     - name: Test
 #       run: dotnet test --no-build --verbosity normal
 #       working-directory: ./.NetCore-Unit-Test/Finished solution/EmployeeManagement.Test
 #       continue-on-error: true
     - name: Build and publish projects
       run: |
-        dotnet publish ./.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj --configuration Release --output website
-#       dotnet publish --configuration Release --output website ./.NetCore-Unit-Test/Starter files/TopLevelManagement
+       dotnet publish .NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj -c Release -o website
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
