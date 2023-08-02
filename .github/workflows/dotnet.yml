@@ -28,10 +28,9 @@ jobs:
 #       continue-on-error: true
     - name: Build and publish projects
       run: |
-        # Replace "path_to_project1.csproj path_to_project2.csproj" with the actual paths to your project files
         dotnet publish --configuration Release --output website ./.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj
-  #      dotnet publish --configuration Release --output website ./.NetCore-Unit-Test/Starter files/TopLevelManagement
-        # Add more dotnet publish commands for other projects
+#       dotnet publish --configuration Release --output website ./.NetCore-Unit-Test/Starter files/TopLevelManagement
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
