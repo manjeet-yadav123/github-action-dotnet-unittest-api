@@ -19,14 +19,14 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       working-directory: ./.NetCore-Unit-Test/Finished solution
-    - name: Build
-      run: dotnet build --no-restore
-      working-directory: ./.NetCore-Unit-Test/Finished solution
+#     - name: Build
+#       run: dotnet build --no-restore
+#       working-directory: ./.NetCore-Unit-Test/Finished solution
 #     - name: Test
 #       run: dotnet test --no-build --verbosity normal
 #       working-directory: ./.NetCore-Unit-Test/Finished solution/EmployeeManagement.Test
 #       continue-on-error: true
-    - name: Publish
+    - name: Build and publish projects
       run: |
         # Replace "path_to_project1.csproj path_to_project2.csproj" with the actual paths to your project files
         dotnet publish --configuration Release --output ./.NetCore-Unit-Test/Starter files/EmployeeManagement ./.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj
