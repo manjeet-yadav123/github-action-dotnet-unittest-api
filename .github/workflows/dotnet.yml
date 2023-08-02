@@ -18,14 +18,15 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./.NetCore-Unit-Test
+      working-directory: ./.NetCore-Unit-Test/Finished solution
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ./.NetCore-Unit-Test
+      working-directory: ./.NetCore-Unit-Test/Finished solution
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ./.NetCore-Unit-Test/**
     - name: Publish
-      run: dotnet publish .NetCore-Unit-Test/dotnet-webapp.csproj -c Release -o website
+      run: dotnet publish .NetCore-Unit-Test/**.csproj -c Release -o website
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
