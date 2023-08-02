@@ -24,7 +24,7 @@ jobs:
       working-directory: ./.NetCore-Unit-Test/Finished solution
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: ./.NetCore-Unit-Test/**
+      working-directory: ./.NetCore-Unit-Test/Finished solution/EmployeeManagement.Test
     - name: Publish
       run: dotnet publish .NetCore-Unit-Test/**.csproj -c Release -o website
     - name: Upload Artifact
