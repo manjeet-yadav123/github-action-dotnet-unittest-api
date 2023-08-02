@@ -28,8 +28,8 @@ jobs:
 #       continue-on-error: true
     - name: Publish
       run: |
-        dotnet publish --configuration Release -o website -p:PublishDir=.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj
-        dotnet publish --configuration Release -o website -p:PublishDir=.NetCore-Unit-Test/Starter files/TopLevelManagement/TopLevelManagement.csproj
+        dotnet publish --configuration Release --output website -p:PublishDir=.NetCore-Unit-Test/Starter files/EmployeeManagement/EmployeeManagement.csproj
+        dotnet publish --configuration Release --output website -p:PublishDir=.NetCore-Unit-Test/Starter files/TopLevelManagement/TopLevelManagement.csproj
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
