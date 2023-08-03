@@ -22,28 +22,21 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
       working-directory: AspNetCoreTests
-#     - name: Test
-#       run: dotnet test --no-build --verbosity normal
-#       working-directory: AspNetCoreTests
-#       continue-on-error: true
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: '**/*.csproj'
+      continue-on-error: true
 
     - name: dotnet publish 
       run: dotnet publish AspNetCoreTests/AspNetCoreTests.Web/*.csproj -c Release -o website
-       
-#     - name: dotnet publish FA2
-#       run: dotnet publish .NetCore-Unit-Test/Starter files/TopLevelManagement/TopLevelManagement.csproj --configuration Release --output upload/Function_Apps/fa2_publish_output
-    
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: app
         path: website/**
         if-no-files-found: error
-#     - name: publish files to artifact
-#       uses: actions/upload-artifact@v2
-#       with:
-#         name: ${{github.run_number}}
-#         path: upload/**
+
 # #============CD=========================
 #   deploy:
 #     needs: build
