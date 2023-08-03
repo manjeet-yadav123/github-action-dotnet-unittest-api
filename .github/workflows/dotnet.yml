@@ -24,7 +24,7 @@ jobs:
       working-directory: AspNetCoreTests
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: '**/*.csproj'
+      working-directory: 'AspNetCoreTests/AspNetCoreTests.UnitTests'
       continue-on-error: true
 
     - name: dotnet publish 
