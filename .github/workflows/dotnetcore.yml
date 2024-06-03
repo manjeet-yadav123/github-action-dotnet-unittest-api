@@ -11,7 +11,7 @@ env:
 jobs:
   build:
    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net-ci-steps.yml@main
-#============CD==========================
+#============CD========================== 
   deploy:
     needs: build
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net.cd-steps.yml@main
