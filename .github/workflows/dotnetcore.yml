@@ -15,3 +15,7 @@ jobs:
   deploy:
     needs: build
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net.cd-steps.yml@main
+    with:
+      AZURE_WEBAPP_NAME: appservice-manjeet
+      AZURE_WEBAPP_PACKAGE_PATH: "app"
+      publish-profile: ${{ secrets.APP_SERVICE_SECRET }}
