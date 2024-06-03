@@ -1,56 +1,56 @@
-name: .NET-CORE6.0-UnitTest-CI
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-env:
-  AZURE_WEBAPP_NAME: appservice-manjeet
-  AZURE_WEBAPP_PACKAGE_PATH: "app"
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: AspNetCoreTests
-    - name: Build
-      run: dotnet build --configuration Release
-      working-directory: AspNetCoreTests
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
-      working-directory: 'AspNetCoreTests'
-      continue-on-error: true
+# name: .NET-CORE6.0-UnitTest-CI
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+# env:
+#   AZURE_WEBAPP_NAME: appservice-manjeet
+#   AZURE_WEBAPP_PACKAGE_PATH: "app"
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Setup .NET
+#       uses: actions/setup-dotnet@v3
+#       with:
+#         dotnet-version: 6.0.x
+#     - name: Restore dependencies
+#       run: dotnet restore
+#       working-directory: AspNetCoreTests
+#     - name: Build
+#       run: dotnet build --configuration Release
+#       working-directory: AspNetCoreTests
+#     - name: Test
+#       run: dotnet test --no-restore --verbosity normal
+#       working-directory: 'AspNetCoreTests'
+#       continue-on-error: true
 
-    - name: dotnet publish 
-      run: dotnet publish AspNetCoreTests/AspNetCoreTests.Web/*.csproj -c Release -o website
+#     - name: dotnet publish 
+#       run: dotnet publish AspNetCoreTests/AspNetCoreTests.Web/*.csproj -c Release -o website
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: app
-        path: website/**
-        if-no-files-found: error
+#     - name: Upload Artifact
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: app
+#         path: website/**
+#         if-no-files-found: error
 
-# #============CD=========================
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: app
-          path: app
+# # #============CD=========================
+#   deploy:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Download Artifact
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: app
+#           path: app
 
-      - name: Deploy to Azure
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.APP_SERVICE_SECRET }}
-          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+#       - name: Deploy to Azure
+#         uses: azure/webapps-deploy@v2
+#         with:
+#           app-name: ${{ env.AZURE_WEBAPP_NAME }}
+#           publish-profile: ${{ secrets.APP_SERVICE_SECRET }}
+#           package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
