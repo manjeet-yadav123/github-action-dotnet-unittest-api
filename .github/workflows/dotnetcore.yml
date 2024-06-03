@@ -14,8 +14,8 @@ jobs:
 #============CD==========================
   deploy:
     needs: build
-    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net.cd-steps.yml@main
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net-cd-steps.yml@main
     with:
-      AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}
-      AZURE_WEBAPP_PACKAGE_PATH: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      AZURE_WEBAPP_NAME: ${{ secrets.AZURE_WEBAPP_NAME }}
+      AZURE_WEBAPP_PACKAGE_PATH: ${{ secrets.AZURE_WEBAPP_PACKAGE_PATH }}
       publish-profile: ${{ secrets.APP_SERVICE_SECRET }}
