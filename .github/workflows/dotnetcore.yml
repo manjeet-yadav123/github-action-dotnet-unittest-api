@@ -1,17 +1,22 @@
-# name: Dot-Core-Web-CI
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
+name: Dot-Core-Web-CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-# env:
-#   AZURE_WEBAPP_NAME: appservice-manjeet
-#   AZURE_WEBAPP_PACKAGE_PATH: "app"
-# jobs:
-#   build:
-#    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net-ci-steps.yml@main
-# #============CD==========================
-#   deploy:
-#     needs: build
-#     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net.cd-steps.yml@main
+env:
+  AZURE_WEBAPP_NAME: appservice-manjeet
+  AZURE_WEBAPP_PACKAGE_PATH: "app"
+jobs:
+  build:
+   uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net-ci-steps.yml@main
+#============CD==========================
+  deploy:
+    needs: build
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net.cd-steps.yml@main
+    with:
+      AZURE_WEBAPP_NAME: appservice-manjeet
+      AZURE_WEBAPP_PACKAGE_PATH: "app"
+    secrets:
+      APP_SERVICE_SECRET: "${{ secrets.APP_SERVICE_SECRET }}"  
