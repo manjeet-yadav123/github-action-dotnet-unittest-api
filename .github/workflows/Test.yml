@@ -15,6 +15,7 @@ jobs:
  
   deploy-dev:
     needs: build
+    secrets: inherit
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: dev
@@ -24,6 +25,7 @@ jobs:
 
   deploy-qa:
     needs: build
+    secrets: inherit
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: QA
@@ -33,6 +35,7 @@ jobs:
 
   deploy-uat:
     needs: build
+    secrets: inherit
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: UAT
@@ -42,6 +45,7 @@ jobs:
 
   deploy-prod:
     needs: build
+    secrets: inherit
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: PROD
