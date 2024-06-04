@@ -14,36 +14,36 @@ jobs:
 
   deploy-dev:
     needs: build
-    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: dev
-      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_DEV }}
+      azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
       app_name: your-app-name-dev
       package_directory: 'build'
 
   deploy-qa:
     needs: build
-    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: QA
-      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_QA }}
+      azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
       app_name: your-app-name-qa
       package_directory: 'build'
 
   deploy-uat:
     needs: build
-    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: UAT
-      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_UAT }}
+      azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
       app_name: your-app-name-uat
       package_directory: 'build'
 
   deploy-prod:
     needs: build
-    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: PROD
-      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_PROD }}
+      azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
       app_name: your-app-name-prod
       package_directory: 'build'
