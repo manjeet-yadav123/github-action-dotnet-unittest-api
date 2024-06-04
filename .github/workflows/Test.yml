@@ -19,7 +19,7 @@ jobs:
     with:
       environment: dev
       azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
-      app_name: your-app-name-dev
+      app_name: appservice-manjeet
       package_directory: 'build'
 
   deploy-qa:
@@ -28,7 +28,7 @@ jobs:
     with:
       environment: QA
       azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
-      app_name: your-app-name-qa
+      app_name: appservice-manjeet
       package_directory: 'build'
 
   deploy-uat:
@@ -37,7 +37,7 @@ jobs:
     with:
       environment: UAT
       azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
-      app_name: your-app-name-uat
+      app_name: appservice-manjeet
       package_directory: 'build'
 
   deploy-prod:
@@ -46,5 +46,5 @@ jobs:
     with:
       environment: PROD
       azure_credentials: ${{ secrets.APP_SERVICE_SECRET }}
-      app_name: your-app-name-prod
+      app_name: appservice-manjeet
       package_directory: 'build'
