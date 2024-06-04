@@ -16,7 +16,7 @@ jobs:
     needs: build
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/.net.cd-steps.yml@main
     with:
-      AZURE_WEBAPP_NAME: appservice-manjeet
-      AZURE_WEBAPP_PACKAGE_PATH: "app"
+      AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}
+      AZURE_WEBAPP_PACKAGE_PATH: ${{ AZURE_WEBAPP_PACKAGE_PATH }}
     secrets:
       APP_SERVICE_SECRET: "${{ secrets.APP_SERVICE_SECRET }}"  
