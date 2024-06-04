@@ -1,0 +1,49 @@
+name: Build and Deploy to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/build.yml@main
+    with:
+      AZURE_WEBAPP_NAME : 'appservice-manjeet'
+      package_directory: 'build'
+
+  deploy-dev:
+    needs: build
+    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    with:
+      environment: dev
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_DEV }}
+      app_name: your-app-name-dev
+      package_directory: 'build'
+
+  deploy-qa:
+    needs: build
+    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    with:
+      environment: QA
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_QA }}
+      app_name: your-app-name-qa
+      package_directory: 'build'
+
+  deploy-uat:
+    needs: build
+    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    with:
+      environment: UAT
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_UAT }}
+      app_name: your-app-name-uat
+      package_directory: 'build'
+
+  deploy-prod:
+    needs: build
+    uses: your-username/Reusable-Test/.github/workflows/deploy.yml@main
+    with:
+      environment: PROD
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS_PROD }}
+      app_name: your-app-name-prod
+      package_directory: 'build'
