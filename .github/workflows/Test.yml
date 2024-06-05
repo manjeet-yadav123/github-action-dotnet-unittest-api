@@ -9,7 +9,6 @@ jobs:
   build:
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/build.yml@main
     with:
-      AZURE_WEBAPP_NAME: 'appservice-manjeet'
       package_directory: 'build'
  
   deploy-dev:
