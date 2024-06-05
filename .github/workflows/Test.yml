@@ -17,7 +17,7 @@ jobs:
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: dev
-      app_name: appservice-manjeet
+      AZURE_WEBAPP_NAME: appservice-manjeet
       package_directory: 'build'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
