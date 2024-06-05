@@ -18,6 +18,7 @@ jobs:
       environment: dev
       AZURE_WEBAPP_NAME: appservice-manjeet
       package_directory: 'build'
+      APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
   # deploy-qa: 
