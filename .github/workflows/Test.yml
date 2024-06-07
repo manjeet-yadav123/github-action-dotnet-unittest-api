@@ -1,23 +1,23 @@
-name: Build and Deploy to Azure Web App
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# name: Build and Deploy to Azure Web App
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-jobs:
-  build:
-    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/build.yml@main
-    with:
-      package_directory: 'build'
+# jobs:
+#   build:
+#     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/build.yml@main
+#     with:
+#       package_directory: 'build'
  
-  deploy-dev:
-    needs: build
-    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
-    with:
-      environment: dev
-      AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'build'
+#   deploy-dev:
+#     needs: build
+#     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
+#     with:
+#       environment: dev
+#       AZURE_WEBAPP_NAME: appservice-manjeet
+#       package_directory: 'build'
     # secrets:
     #   APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
   # deploy-qa: 
