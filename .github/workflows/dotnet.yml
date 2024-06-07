@@ -57,7 +57,7 @@ jobs:
 
 # #============CD=========================
   qa:
-    needs: build
+    needs: dev
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
