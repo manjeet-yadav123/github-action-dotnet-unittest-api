@@ -26,7 +26,7 @@ jobs:
   #   uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
   #   with: 
   #     environment: QA
-  #     APP_SERVICE_SECRET : ${{ secrets.APP_SERVICE_SECRET }}
+  #     APP_SERVICE_SECRET : ${{ secrets.APP_SERVICE_SECRET }} 
   #     app_name: appservice-manjeet
   #     package_directory: 'build'
 
