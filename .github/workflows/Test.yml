@@ -11,40 +11,40 @@ jobs:
     with:
       package_directory: 'website/**'
  
-  deploy-dev:
+  DEV:
     needs: build
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: dev
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website/**'
+      package_directory: 'website'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
-  deploy-qa:  
-    needs: build
+  QA:  
+    needs: DEV
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: QA
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website/**'
+      package_directory: 'website'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
-  deploy-uat:
-    needs: build
+  UAT:
+    needs: QA
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: UAT
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website/**'
+      package_directory: 'website'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}'
 
-  deploy-prod:
-    needs: build
+  PROD:
+    needs: UAT
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
     with:
       environment: PROD
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website/**'
+      package_directory: 'website'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
