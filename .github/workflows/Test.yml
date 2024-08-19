@@ -9,7 +9,7 @@ jobs:
   build:
     uses: manjeet-yadav123/Pipeline-Common/.github/workflows/build.yml@main
     with:
-      package_directory: 'build'
+      package_directory: 'website/**'
  
   deploy-dev:
     needs: build
@@ -17,7 +17,7 @@ jobs:
     with:
       environment: dev
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'build'
+      package_directory: 'website/**'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
   deploy-qa:  
@@ -26,7 +26,7 @@ jobs:
     with:
       environment: QA
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'build'
+      package_directory: 'website/**'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
   deploy-uat:
@@ -35,7 +35,7 @@ jobs:
     with:
       environment: UAT
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'build'
+      package_directory: 'website/**'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}'
 
@@ -45,6 +45,6 @@ jobs:
     with:
       environment: PROD
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'build'
+      package_directory: 'website/**'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
