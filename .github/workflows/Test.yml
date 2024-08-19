@@ -17,7 +17,7 @@ jobs:
     with:
       environment: dev
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website'
+      package_directory: 'BuildArtifacts'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
   QA:  
@@ -26,7 +26,7 @@ jobs:
     with:
       environment: QA
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website'
+      package_directory: 'BuildArtifacts'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
   UAT:
@@ -35,7 +35,7 @@ jobs:
     with:
       environment: UAT
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website'
+      package_directory: 'BuildArtifacts'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}'
 
@@ -45,6 +45,6 @@ jobs:
     with:
       environment: PROD
       AZURE_WEBAPP_NAME: appservice-manjeet
-      package_directory: 'website'
+      package_directory: 'BuildArtifacts'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
