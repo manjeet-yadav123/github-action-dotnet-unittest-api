@@ -20,32 +20,31 @@ jobs:
       package_directory: 'build'
     secrets:
       APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
-  # deploy-qa:  
-  #   needs: build
-  #   secrets: inherit
-  #   uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
-  #   with: 
-  #     environment: QA
-  #     APP_SERVICE_SECRET : ${{ secrets.APP_SERVICE_SECRET }} 
-  #     app_name: appservice-manjeet
-  #     package_directory: 'build'
+  deploy-qa:  
+    needs: build
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
+    with:
+      environment: QA
+      AZURE_WEBAPP_NAME: appservice-manjeet
+      package_directory: 'build'
+    secrets:
+      APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
+  deploy-uat:
+    needs: build
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
+    with:
+      environment: UAT
+      AZURE_WEBAPP_NAME: appservice-manjeet
+      package_directory: 'build'
+    secrets:
+      APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}'
 
-  # deploy-uat:
-  #   needs: build
-  #   secrets: inherit
-  #   uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
-  #   with:
-  #     environment: UAT
-  #     APP_SERVICE_SECRET : ${{ secrets.APP_SERVICE_SECRET }}
-  #     app_name: appservice-manjeet
-  #     package_directory: 'build'
-
-  # deploy-prod:
-  #   needs: build
-  #   secrets: inherit
-  #   uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
-  #   with:
-  #     environment: PROD
-  #     APP_SERVICE_SECRET : ${{ secrets.APP_SERVICE_SECRET }}
-  #     app_name: appservice-manjeet
-  #     package_directory: 'build'
+  deploy-prod:
+    needs: build
+    uses: manjeet-yadav123/Pipeline-Common/.github/workflows/release.yml@main
+    with:
+      environment: PROD
+      AZURE_WEBAPP_NAME: appservice-manjeet
+      package_directory: 'build'
+    secrets:
+      APP_SERVICE_SECRET: ${{ secrets.APP_SERVICE_SECRET }}
